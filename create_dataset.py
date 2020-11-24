@@ -14,28 +14,31 @@ def performance_stats(id):
 	low = len(id_data[id_data['episode_placement']=='LOW'])
 	bottom = len(id_data[id_data['episode_placement']=='BTM2']) + len(id_data[id_data['episode_placement']=='BTM6'])
 	
-	return(wins, high, safe, low, bottom)
+	return(n, wins, high, safe, low, bottom)
 
-n_wins = []
-n_highs = []
-n_safe = []
-n_low = []
-n_btm = []
+n = []
+wins = []
+highs = []
+safe = []
+low = []
+btm = []
 
 for i in dataset.contestant_id: 
-	win_id, high_id, safe_id, low_id, btm_id = performance_stats(i)
-	n_wins.append(win_id)
-	n_highs.append(high_id)
-	n_safe.append(safe_id)
-	n_low.append(low_id)
-	n_btm.append(btm_id)
+	n_id, win_id, high_id, safe_id, low_id, btm_id = performance_stats(i)
+	n.append(n_id)
+	wins.append(win_id)
+	highs.append(high_id)
+	safe.append(safe_id)
+	low.append(low_id)
+	btm.append(btm_id)
 
 
-dataset.insert(5, 'nWins', n_wins)
-dataset.insert(6, 'nHighs', n_highs)
-dataset.insert(7, 'nSafe', n_safe)
-dataset.insert(8, 'nLow', n_low)
-dataset.insert(9, 'nBottom', n_btm)
+dataset.insert(5, 'Wins', wins)
+dataset.insert(6, 'Highs', highs)
+dataset.insert(7, 'Safe', safe)
+dataset.insert(8, 'Low', low)
+dataset.insert(9, 'Bottom', btm)
+dataset.insert(10, 'Number_of_Episodes', n)
 
 ## labels 
 contestants_per_szn_dct = {}
@@ -61,5 +64,5 @@ for f in fraction_label:
 		labels.append(5)
 
 
-dataset.insert(11, 'Label', labels)
-#dataset.to_csv('Datasets/RPDR_Predictor_Dataset_test2.csv', index=False)
+dataset.insert(12, 'Label', labels)
+dataset.to_csv('Datasets/RPDR_Predictor_Dataset.csv', index=False)
