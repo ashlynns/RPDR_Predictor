@@ -118,9 +118,8 @@ def distributions_norm(column, dataset):
 def minmaxnorm(data):
 	minv = min(data)
 	maxv = max(data)
-	scaled = (2*(data-minv)/maxv-minv)-1 
+	scaled = (2*(data-minv)/(maxv-minv))-1 
 	return(scaled)
-
 
 def distributions_norm2(column, dataset):
 	#n = 'Number_of_Episodes'
@@ -132,12 +131,14 @@ def distributions_norm2(column, dataset):
 
 	L1 = dataset[dataset['Label']==1]
 	L1s = minmaxnorm(L1[column])
+	print(L1s)
 	mu1, sigma1 = scipy.stats.norm.fit(L1s)
 	bfl1 = scipy.stats.norm.pdf(bins, mu1, sigma1)
 	#plt.plot(bins, bfl1, label = 'Class 1', color='b')
 
 	L2 = dataset[dataset['Label']==2]
 	L2s = minmaxnorm(L2[column])
+	print(L2s)
 	mu2, sigma2 = scipy.stats.norm.fit(L2s)
 	bfl2 = scipy.stats.norm.pdf(bins, mu2, sigma2)
 	#plt.plot(bins, bfl2, label = 'Class 2', color = 'g')
@@ -168,8 +169,8 @@ def distributions_norm2(column, dataset):
 
 
 def subplots(column, dataset): 
-	bins, bfl1, bfl2, bfl3, bfl4 = distributions(column, dataset)
-	nbins, nbfl1, nbfl2, nbfl3, nbfl4 = distributions_norm2(column, dataset)
+	bins, bfl1, bfl2, bfl3, bfl4, bfl5 = distributions(column, dataset)
+	nbins, nbfl1, nbfl2, nbfl3, nbfl4, nbfl5 = distributions_norm2(column, dataset)
 
 	plt.figure(1)
 
@@ -180,7 +181,8 @@ def subplots(column, dataset):
 	plt.plot(bins, bfl4, label = 'Class 4', color = 'k', ls = ':')
 	plt.plot(bins, bfl5, label = 'Class 5', color = 'k', marker = '.')
 	plt.legend()
-	plt.title("Distribution of "+column+" Queens per Class \n Pre Normalization by Episode Apperance")
+	plt.title("Distribution of Queens Age per Class \n Pre Normalization")
+	#plt.title("Distribution of "+column+" Queens per Class \n Pre Normalization")
 
 	plt.subplot(212)
 	plt.plot(nbins, nbfl1, label = 'Class 1', color='k', ls = '-')
@@ -189,11 +191,12 @@ def subplots(column, dataset):
 	plt.plot(nbins, nbfl4, label = 'Class 4', color = 'k', ls = ':')
 	plt.plot(nbins, nbfl5, label = 'Class 5', color = 'k', marker='.')
 	plt.legend()
-	plt.title("Distribution of "+column+" Queens per Class \n Post Normalization by Episode Apperance")
+	plt.title("Distribution of Queens Age per Class \n Post Normalization")
+	#plt.title("Distribution of "+column+" Queens per Class \n Post Normalization")
 
 	plt.show()
 
 	return()
 
-subplots('Wins', dataset)
+subplots('age', dataset)
 

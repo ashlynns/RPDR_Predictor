@@ -13,7 +13,7 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 12,2,3,Raven,30,Riverside,California,2,itsravenhunty_,RavenHUNTY
 13,2,4,Jujubee,25,Boston,Massachusetts,3,jujubeeonline,jujuboston
 14,2,5,Sahara Davenport,25,New York,New York,7,,
-15,2,6,Morgan McMichaels,28,Mira Loma,California,8,morganmcmichaels,morganmcmichael
+15,2,6,Morgan McMichaels,28,Ontario,California,8,morganmcmichaels,morganmcmichael
 16,2,7,Mystique Summers Madison,25,Bedford,Texas,10,mystiquesummers,MystiqueSummers
 17,2,8,Jessica Wild,29,San Juan,Puerto Rico,6,jessicawild88,JessicaWild88
 18,2,9,Sonique,26,Atlanta,Georgia,9,xosonique,xoSonique
@@ -24,7 +24,7 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 23,3,2,Carmen Carrera,25,Elmwood Park,New Jersey,5,carmen_carrera,Carmen_Carrera
 24,3,3,Phoenix,29,Atlanta,Georgia,12,phoenix_atl,Phoenix_atl
 25,3,4,Manila Luzon,28,New York,New York,2,manilaluzon,manilaluzon
-26,3,5,Stacy Layne Matthews,25,Back Swamp,North Carolina,8,stacylmatthews,StacyLMatthews
+26,3,5,Stacy Layne Matthews,25,Fayetteville,North Carolina,8,stacylmatthews,StacyLMatthews
 27,3,6,Venus D-Lite,26,Los Angeles,California,13,venusdlitemadonna,venusdlite
 28,3,7,Yara Sofia,26,Manati,Puerto Rico,4,yarasofiapr,yarasofiapr
 29,3,8,Mariah,29,Atlanta,Georgia,9,mug4dayz,mug4dayz
@@ -33,7 +33,6 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 32,3,11,Mimi Imfurst,27,New York,New York,11,mimiimfurst,
 33,3,12,Raja,36,Los Angeles,California,1,sutanamrull,sutanamrull
 34,3,13,Shangela,29,Los Angeles,California,6,itsshangela,itsSHANGELA
-35,4,1,Willam,29,Los Angeles,California,7,willam,willam
 36,4,2,Lashauwn Beyond,21,Fort Lauderdale,Florida,12,lashauwnbeyond,LashauwnBeyond
 37,4,3,Jiggly Caliente,30,Queens,New York,8,jigglycalienteofficial,JigglyCaliente
 38,4,4,Phi Phi O'Hara,25,Chicago,Illinois,2,phiphiohara,PhiPhiOhara
@@ -63,7 +62,7 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 62,6,1,Adore Delano,23,Azusa,California,2,adoredelano,AdoreDelano
 63,6,2,BenDeLaCreme,31,Seattle,Washington,5,bendelacreme,bendelacreme
 64,6,3,Gia Gunn,23,Chicago,Illinois,10,gia_gunn,GiaGunn
-65,6,4,Laganja Estranja,24,Van Nuys,California,8,laganjaestranja,LaganjaEstranja
+65,6,4,Laganja Estranja,24,Los Angeles,California,8,laganjaestranja,LaganjaEstranja
 66,6,5,April Carrión,24,Guaynabo,Puerto Rico,11,aprilcarrion,ApriLcarrion
 67,6,6,Kelly Mantle,36,Los Angeles,California,13,kellymantle,thekellymantle
 68,6,7,Vivacious,40,New York,New York,12,vivaciousnyc,VivaciousNYC
@@ -89,7 +88,6 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 88,7,13,Sasha Belle,28,Iowa City,Iowa,13,sashabelley,SashaBelle3
 89,7,14,Tempest DuJour,46,Tucson,Arizona,14,tempestdujour,TempestDujour
 90,8,1,Naomi Smalls,21,Redlands,California,2,naomismalls,naomismallsduh
-91,8,2,Cynthia Lee Fontaine,34,Austin,Texas,10,cynthialeefontaine,lee_fontaine
 92,8,3,Dax ExclamationPoint,31,Savannah,Georgia,11,daxclamation,Daxclamation
 93,8,4,Naysha Lopez,31,Chicago,Illinois,9,nayshalopez,nayshalopez
 94,8,5,Acid Betty,37,Brooklyn,New York,8,acidbetty,acidbettyrocks
@@ -101,8 +99,7 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 100,8,11,Chi Chi DeVayne,29,Shreveport,Louisiana,4,chichidevayneofficial,ChiChiDeVayne
 101,8,12,Derrick Barry,32,Las Vegas,Nevada,5,derrickbarry,DerrickBarry
 102,9,1,Peppermint,37,New York,New York,2,peppermint247,Peppermint247
-103,9,2,Valentina,25,Echo Park,California,7,allaboutvalentina,AllOfValentina
-104,9,3,Eureka,25,Johnson City,Tennessee,11,eurekaohara,eurekaohara
+103,9,2,Valentina,25,Los Angeles,California,7,allaboutvalentina,AllOfValentina
 105,9,4,Charlie Hides,52,Boston,Massachusetts,12,charliehidestv,charliehidestv
 106,9,5,Farrah Moan,23,Las Vegas,Nevada,8,farrahrized,farrahrized
 107,9,6,Sasha Velour,29,Brooklyn,New York,1,sashavelour,sasha_velour
@@ -116,10 +113,10 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 115,9,14,Cynthia Lee Fontaine,35,Austin,Texas,10,cynthialeefontaine,lee_fontaine
 116,10,1,Eureka,27,Johnson City,Tennessee,2,eurekaohara,eurekaohara
 117,10,2,Asia O'Hara,35,Dallas,Texas,4,asiaoharaland,AsiaOharaLand
-118,10,3,Miz Cracker,33,Harlem,New York,5,miz_cracker,miz_cracker
+118,10,3,Miz Cracker,33,New York,New York,5,miz_cracker,miz_cracker
 119,10,4,Yuhua Hamasaki,27,New York,New York,12,yuhuahamasaki,YuhuaHamasaki
 120,10,5,Blair St. Clair,22,Indianapolis,Indiana,9,blairst.clair,BlairStClair
-121,10,6,Monét X Change,27,The Bronx,New York,6,monetxchange,monetxchange
+121,10,6,Monét X Change,27,Bronx,New York,6,monetxchange,monetxchange
 122,10,7,Kameron Michaels,31,Nashville,Tennessee,2,kameronmichaels,KameronMichaels
 123,10,8,Mayhem Miller,35,Riverside,California,10,theonlymayhem,TheOnlyMayhem
 124,10,9,Kalorie Karbdashian Williams,27,Albuquerque,New Mexico,13,kalkarbdashianw,kalKARBdashianw
@@ -144,15 +141,14 @@ contestant_id,season_number,contestant_entrance,contestant_name,age,hometown_cit
 143,11,14,Kahanna Montrese,25,Las Vegas,Nevada,14,kahannamontrese,kahannamontrese
 144,11,15,Soju,27,Chicago,Illinois,15,shotwithsoju,shotwithsoju
 145,12,,Jaida Essence Hall ,32,Milwaukee,Wisconsin,1,,
-146,12,,Crystal Methyd ,28,Springfeild ,Missouri,2,,
+146,12,,Crystal Methyd ,28,Springfield,Missouri,2,,
 147,12,,Gigi Goode ,21,Los Angeles,California,3,,
-148,12,,Sherry Pie ,27,New York,New York,4,,
 149,12,,Jackie Cox ,34,New York,New York,5,,
-150,12,,Hedi N Closet ,24,Ramseur ,North Carolina,6,,
+150,12,,Hedi N Closet ,24,Ramseur,North Carolina,6,,
 151,12,,Widdow Von’Du ,30,Kansas City,Missouri,7,,
 152,12,,Jan ,26,New York,New York,8,,
 153,12,,Brita ,34,New York,New York,9,,
-154,12,,Aiden Zhane ,29,Acworth ,Georgia,10,,
+154,12,,Aiden Zhane ,29,Acworth,Georgia,10,,
 155,12,,Nicky Doll ,28,New York,New York,11,,
 156,12,,Rock M Sakura ,28,San Francisco,California,12,,
 157,12,,Dahlia Sin ,28,Los Angeles,California,13,,
