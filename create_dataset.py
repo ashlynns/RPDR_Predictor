@@ -2,8 +2,25 @@ import pandas as pd
 
 rankings = pd.read_csv('Datasets/RuPaul-Predict-A-Looza — Data Tables - all_rankings.csv')
 contestants = pd.read_csv('Datasets/RuPaul-Predict-A-Looza — Data Tables - all_contestants.csv')
+cities = pd.read_csv("Datasets/uscities.csv", usecols = ['city_ascii', 'state_name', 'lat', 'lng'])
 
 dataset = contestants[['contestant_id', 'season_number', 'age', 'hometown_city', 'hometown_state', 'season_outcome']]
+
+lat = []
+lng = []
+
+for i in range(0,len(dataset)):
+	town = dataset.hometown_city.iloc[i]
+	state = dataset.hometown_state.iloc[i]
+	if town in cities.city_ascii.values: 
+		subcities = cities[cities.city_ascii == town]
+		if state in subcities.state_name.values: 
+			t = cities[(cities['city_ascii'] == town) & (cities['state_name'] == state)]
+			lat.append(t.lat.values[0])
+			lng.append(t.lng.values[0])
+
+dataset.insert(5, 'Lat', lat)
+dataset.insert(6, 'Lng', lng) 
 
 def performance_stats(id):
 	id_data = rankings[rankings['contestant_id']==id]
@@ -33,12 +50,12 @@ for i in dataset.contestant_id:
 	btm.append(btm_id)
 
 
-dataset.insert(5, 'Wins', wins)
-dataset.insert(6, 'Highs', highs)
-dataset.insert(7, 'Safe', safe)
-dataset.insert(8, 'Low', low)
-dataset.insert(9, 'Bottom', btm)
-dataset.insert(10, 'Number_of_Episodes', n)
+dataset.insert(7, 'Wins', wins)
+dataset.insert(8, 'Highs', highs)
+dataset.insert(9, 'Safe', safe)
+dataset.insert(10, 'Low', low)
+dataset.insert(11, 'Bottom', btm)
+dataset.insert(12, 'Number_of_Episodes', n)
 
 ## labels 
 contestants_per_szn_dct = {}
@@ -48,7 +65,6 @@ for s in dataset.season_number.unique():
 
 #smaller value means they performerd better
 fraction_label = dataset.season_outcome/[contestants_per_szn_dct[x] for x in dataset.season_number]
-print(fraction_label)
 
 labels = [] # This is written to divide into 4 performance categories 
 for f in fraction_label: 
@@ -64,5 +80,5 @@ for f in fraction_label:
 		labels.append(5)
 
 
-dataset.insert(12, 'Label', labels)
+dataset.insert(14, 'Label', labels)
 dataset.to_csv('Datasets/RPDR_Predictor_Dataset.csv', index=False)
