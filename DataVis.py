@@ -42,77 +42,158 @@ plt.show()
 def distributions(column, dataset):
 	min_val = min(dataset[column])
 	max_val = max(dataset[column])
-	bins = numpy.linspace(min_val, max_val, 10)
+	bins = numpy.linspace(min_val, max_val, 50)
 
 	L1 = dataset[dataset['Label']==1]
 	mu1, sigma1 = scipy.stats.norm.fit(L1[column])
 	bfl1 = scipy.stats.norm.pdf(bins, mu1, sigma1)
-	plt.plot(bins, bfl1, label = 'Class 1', color='b')
+	#plt.plot(bins, bfl1, label = 'Class 1', color='b')
 
 	L2 = dataset[dataset['Label']==2]
 	mu2, sigma2 = scipy.stats.norm.fit(L2[column])
 	bfl2 = scipy.stats.norm.pdf(bins, mu2, sigma2)
-	plt.plot(bins, bfl2, label = 'Class 2', color = 'g')
+	#plt.plot(bins, bfl2, label = 'Class 2', color = 'g')
 
 	L3 = dataset[dataset['Label']==3]
 	mu3, sigma3 = scipy.stats.norm.fit(L3[column])
 	bfl3 = scipy.stats.norm.pdf(bins, mu3, sigma3)
-	plt.plot(bins, bfl3, label = 'Class 3', color = 'r')
+	#plt.plot(bins, bfl3, label = 'Class 3', color = 'r')
 
 	L4= dataset[dataset['Label']==4]
 	mu4, sigma4 = scipy.stats.norm.fit(L4[column])
 	bfl4 = scipy.stats.norm.pdf(bins, mu4, sigma4)
-	plt.plot(bins, bfl4, label = 'Class 4', color = 'm')
+	#plt.plot(bins, bfl4, label = 'Class 4', color = 'm')
 
 	L5 = dataset[dataset['Label']==5]
 	mu5, sigma5 = scipy.stats.norm.fit(L5[column])
 	bfl5 = scipy.stats.norm.pdf(bins, mu5, sigma5)
-	plt.plot(bins, bfl5, label = 'Class 5', color = 'k')
+	#plt.plot(bins, bfl5, label = 'Class 5', color = 'k')
 
-	plt.legend()
-	plt.title(column)
-	plt.show()
-	
-	return()
+	#plt.legend()
+	#plt.title(column)
+	#plt.show()
+	#return()
+	return(bins, bfl1, bfl2, bfl3, bfl4, bfl5)
+
 
 def distributions_norm(column, dataset):
 	n = 'Number_of_Episodes'
 	min_val = min(dataset[column]/dataset[n])
 	max_val = max(dataset[column]/dataset[n])
-	bins = numpy.linspace(min_val, max_val, 10)
+	bins = numpy.linspace(min_val, max_val, 50)
 	
 	#bins = list(range(0, max_val, 0.1))
 
 	L1 = dataset[dataset['Label']==1]
 	mu1, sigma1 = scipy.stats.norm.fit(L1[column]/L1[n])
 	bfl1 = scipy.stats.norm.pdf(bins, mu1, sigma1)
-	plt.plot(bins, bfl1, label = 'Class 1', color='b')
+	#plt.plot(bins, bfl1, label = 'Class 1', color='b')
 
 	L2 = dataset[dataset['Label']==2]
 	mu2, sigma2 = scipy.stats.norm.fit(L2[column]/L2[n])
 	bfl2 = scipy.stats.norm.pdf(bins, mu2, sigma2)
-	plt.plot(bins, bfl2, label = 'Class 2', color = 'g')
+	#plt.plot(bins, bfl2, label = 'Class 2', color = 'g')
 
 	L3 = dataset[dataset['Label']==3]
 	mu3, sigma3 = scipy.stats.norm.fit(L3[column]/L3[n])
 	bfl3 = scipy.stats.norm.pdf(bins, mu3, sigma3)
-	plt.plot(bins, bfl3, label = 'Class 3', color = 'r')
+	#plt.plot(bins, bfl3, label = 'Class 3', color = 'r')
 
 	L4= dataset[dataset['Label']==4]
 	mu4, sigma4 = scipy.stats.norm.fit(L4[column]/L4[n])
 	bfl4 = scipy.stats.norm.pdf(bins, mu4, sigma4)
-	plt.plot(bins, bfl4, label = 'Class 4', color = 'm')
+	#plt.plot(bins, bfl4, label = 'Class 4', color = 'm')
 
 	L5 = dataset[dataset['Label']==5]
 	mu5, sigma5 = scipy.stats.norm.fit(L5[column]/L5[n])
 	bfl5 = scipy.stats.norm.pdf(bins, mu5, sigma5)
-	plt.plot(bins, bfl5, label = 'Class 5', color = 'k')
+	#plt.plot(bins, bfl5, label = 'Class 5', color = 'k')
 
-	plt.legend()
-	plt.title(column+" norm")
-	plt.show()
+	#plt.legend()
+	#plt.title(column+" norm")
+	#plt.show()
 	
+	return(bins, bfl1, bfl2, bfl3, bfl4, bfl5)
+
+def minmaxnorm(data):
+	minv = min(data)
+	maxv = max(data)
+	scaled = (2*(data-minv)/maxv-minv)-1 
+	return(scaled)
+
+
+def distributions_norm2(column, dataset):
+	#n = 'Number_of_Episodes'
+	#min_val = min(dataset[column])
+	#max_val = max(dataset[column])
+	bins = numpy.linspace(-1, 1, 50)
+	
+	#bins = list(range(0, max_val, 0.1))
+
+	L1 = dataset[dataset['Label']==1]
+	L1s = minmaxnorm(L1[column])
+	mu1, sigma1 = scipy.stats.norm.fit(L1s)
+	bfl1 = scipy.stats.norm.pdf(bins, mu1, sigma1)
+	#plt.plot(bins, bfl1, label = 'Class 1', color='b')
+
+	L2 = dataset[dataset['Label']==2]
+	L2s = minmaxnorm(L2[column])
+	mu2, sigma2 = scipy.stats.norm.fit(L2s)
+	bfl2 = scipy.stats.norm.pdf(bins, mu2, sigma2)
+	#plt.plot(bins, bfl2, label = 'Class 2', color = 'g')
+
+	L3 = dataset[dataset['Label']==3]
+	L3s = minmaxnorm(L3[column])
+	mu3, sigma3 = scipy.stats.norm.fit(L3s)
+	bfl3 = scipy.stats.norm.pdf(bins, mu3, sigma3)
+	#plt.plot(bins, bfl3, label = 'Class 3', color = 'r')
+
+	L4= dataset[dataset['Label']==4]
+	L4s = minmaxnorm(L4[column])
+	mu4, sigma4 = scipy.stats.norm.fit(L4s)
+	bfl4 = scipy.stats.norm.pdf(bins, mu4, sigma4)
+	#plt.plot(bins, bfl4, label = 'Class 4', color = 'm')
+
+	L5 = dataset[dataset['Label']==5]
+	L5s = minmaxnorm(L5[column])
+	mu5, sigma5 = scipy.stats.norm.fit(L5s)
+	bfl5 = scipy.stats.norm.pdf(bins, mu5, sigma5)
+	#plt.plot(bins, bfl5, label = 'Class 5', color = 'k')
+
+	#plt.legend()
+	#plt.title(column+" norm")
+	#plt.show()
+	
+	return(bins, bfl1, bfl2, bfl3, bfl4, bfl5)
+
+
+def subplots(column, dataset): 
+	bins, bfl1, bfl2, bfl3, bfl4 = distributions(column, dataset)
+	nbins, nbfl1, nbfl2, nbfl3, nbfl4 = distributions_norm2(column, dataset)
+
+	plt.figure(1)
+
+	plt.subplot(211)
+	plt.plot(bins, bfl1, label = 'Class 1', color='k', ls = '-')
+	plt.plot(bins, bfl2, label = 'Class 2', color = 'k', ls = '--')
+	plt.plot(bins, bfl3, label = 'Class 3', color = 'k', ls = '-.')
+	plt.plot(bins, bfl4, label = 'Class 4', color = 'k', ls = ':')
+	plt.plot(bins, bfl5, label = 'Class 5', color = 'k', marker = '.')
+	plt.legend()
+	plt.title("Distribution of "+column+" Queens per Class \n Pre Normalization by Episode Apperance")
+
+	plt.subplot(212)
+	plt.plot(nbins, nbfl1, label = 'Class 1', color='k', ls = '-')
+	plt.plot(nbins, nbfl2, label = 'Class 2', color = 'k', ls = '--')
+	plt.plot(nbins, nbfl3, label = 'Class 3', color = 'k', ls = '-.')
+	plt.plot(nbins, nbfl4, label = 'Class 4', color = 'k', ls = ':')
+	plt.plot(nbins, nbfl5, label = 'Class 5', color = 'k', marker='.')
+	plt.legend()
+	plt.title("Distribution of "+column+" Queens per Class \n Post Normalization by Episode Apperance")
+
+	plt.show()
+
 	return()
 
-distributions('Safe', dataset)
-distributions_norm('Safe', dataset)
+subplots('Wins', dataset)
+
