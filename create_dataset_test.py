@@ -26,13 +26,13 @@ dataset.insert(6, 'Lng', lng)
 def performance_stats(id):
 	id_data = rankings[rankings['contestant_id']==id]
 	n = len(id_data)
-	wins = len(id_data[id_data['episode_placement']=='WIN'])
-	high = len(id_data[id_data['episode_placement']=='HIGH'])
+	#wins = len(id_data[id_data['episode_placement']=='WIN'])
+	high = len(id_data[id_data['episode_placement']=='HIGH']) + len(id_data[id_data['episode_placement']=='WIN'])
 	safe = len(id_data[id_data['episode_placement']=='SAFE'])
-	low = len(id_data[id_data['episode_placement']=='LOW'])
-	bottom = len(id_data[id_data['episode_placement']=='BTM2']) + len(id_data[id_data['episode_placement']=='BTM6'])
+	low = len(id_data[id_data['episode_placement']=='LOW'])+len(id_data[id_data['episode_placement']=='BTM2']) + len(id_data[id_data['episode_placement']=='BTM6'])
+	#bottom = len(id_data[id_data['episode_placement']=='BTM2']) + len(id_data[id_data['episode_placement']=='BTM6'])
 	
-	return(n, wins, high, safe, low, bottom)
+	return(n, high, safe, low)
 
 n = []
 wins = []
@@ -42,20 +42,20 @@ low = []
 btm = []
 
 for i in dataset.contestant_id: 
-	n_id, win_id, high_id, safe_id, low_id, btm_id = performance_stats(i)
+	n_id, high_id, safe_id, low_id= performance_stats(i)
 	n.append(n_id)
-	wins.append(win_id)
+	#wins.append(win_id)
 	highs.append(high_id)
 	safe.append(safe_id)
 	low.append(low_id)
-	btm.append(btm_id)
+	#btm.append(btm_id)
 
-dataset.insert(7, 'Wins', wins)
-dataset.insert(8, 'High', highs)
-dataset.insert(9, 'Safe', safe)
-dataset.insert(10, 'Low', low)
-dataset.insert(11, 'Bottom', btm)
-dataset.insert(12, 'Number_of_Episodes', n)
+#dataset.insert(7, 'Wins', wins)
+dataset.insert(7, 'High', highs)
+dataset.insert(8, 'Safe', safe)
+dataset.insert(9, 'Low', low)
+#dataset.insert(11, 'Bottom', btm)
+dataset.insert(10, 'Number_of_Episodes', n)
 
 ## labels 
 contestants_per_szn_dct = {}
@@ -75,7 +75,7 @@ for f in fraction_label:
 		labels.append(3) # 2nd quarter of queens - didnt do great 
 	if f > 3/4: 
 		labels.append(4) #1st quarter - did bad 
-dataset.insert(14, 'Label', labels)
+dataset.insert(12, 'Label', labels)
 
 
 ### Normalization ### 
@@ -99,10 +99,11 @@ def norm(column, dataset=dataset):
 #norm('Bottom')	
 
 dataset.insert(3, 'age_n', minmaxnorm(dataset['age']))
-dataset.insert(9, 'Wins_n', norm('Wins'))
-dataset.insert(11, 'High_n', norm('High'))
-dataset.insert(13, 'Safe_n', norm('Safe'))
-dataset.insert(15, 'Low_n', norm('Low'))
-dataset.insert(17, 'Bottom_n', norm('Bottom'))
+#dataset.insert(9, 'Wins_n', norm('Wins'))
+dataset.insert(9, 'High_n', norm('High'))
+dataset.insert(11, 'Safe_n', norm('Safe'))
+dataset.insert(13, 'Low_n', norm('Low'))
+#dataset.insert(17, 'Bottom_n', norm('Bottom'))
 
-dataset.to_csv('Datasets/RPDR_Predictor_Dataset.csv', index=False)
+#print(dataset)
+dataset.to_csv('Datasets/RPDR_Predictor_Dataset_test.csv', index=False)
